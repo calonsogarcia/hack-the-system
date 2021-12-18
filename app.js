@@ -36,6 +36,9 @@ app.use("/user", user);
 const learningRoutes = require('./routes/learningRoutes.routes');
 app.use("/learning_routes", learningRoutes);
 
+const theoryRoutes = require('./routes/theory.routes');
+app.use('/theory', theoryRoutes);
+
 app.get('/*', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(404);
