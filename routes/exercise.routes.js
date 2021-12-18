@@ -1,10 +1,10 @@
-const CourseRoute = require("../models/Course.model");
+const ExerciseRoute = require("../models/Exercise.model");
 const router = require("express").Router();
 
 router.get('/list', (req, res, next) => {
-    CourseRoute.find((err, data) => {
+    ExerciseRoute.find((err, data) => {
         if (err) {
-            res.end(JSON.stringify({"message": "Course Path error"}))
+            res.end(JSON.stringify({"message": "Exercise Path error"}))
         } else {
             res.end(JSON.stringify(data));
         }
@@ -13,14 +13,14 @@ router.get('/list', (req, res, next) => {
 
 router.post("/", (req, res, next) => {
     const {
-        name,
+        title,
         description,
-        course_id
+        answer
     } = req.body;
-    CourseRoute.create({
-        name,
+    ExerciseRoute.create({
+        title,
         description,
-        course_id
+        answer
     })
       .then((data) => res.status(200).json(data))
       .catch((err) => next(err));
@@ -28,23 +28,23 @@ router.post("/", (req, res, next) => {
 
 
   router.get("/:id", (req, res, next) => {
-    CourseRoute.findById(req.params.id)
+    ExerciseRoute.findById(req.params.id)
       .then((data) => res.status(200).json(data))
       .catch((err) => next(err));
   });
   
   router.patch("/:id", (req, res, next) => {
     const {
-        name,
+        title,
         description,
-        course_id
+        answer
     } = req.body;
-    CourseRoute.findByIdAndUpdate(
+    ExerciseRoute.findByIdAndUpdate(
       req.params.id,
       {
-        name,
+        title,
         description,
-        course_id
+        answer
     })
       .then((data) => res.status(200).json(data))
       .catch((err) => next(err));
