@@ -15,8 +15,9 @@ const hbs = require("hbs");
 
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require("cors");
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(cors());
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
