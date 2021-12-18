@@ -133,4 +133,15 @@ router.delete("/profiles/:id", (req, res, next) => {
     .catch((err) => next(err));
 });
 
+router.get('/list', (req, res, next) => {
+  User.find((err, data) => {
+    if (err){
+      console.log("error")
+      res.end(JSON.stringify({message: "No users"}))
+    } else {
+      res.end(JSON.stringify(data));
+    }
+  })
+});
+
 module.exports = router;
