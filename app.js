@@ -33,6 +33,9 @@ app.use("/", index);
 const user = require("./routes/auth.routes");
 app.use("/user", user);
 
+const learningRoutes = require('./routes/learningRoutes.routes');
+app.use("/learning_routes", learningRoutes);
+
 app.get('/*', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(404);
