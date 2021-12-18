@@ -1,7 +1,12 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
-//const { isLoggedIn } = require("../middlewares/authoritation")
+
+router.get("/all", (req, res, next) => {
+  User.find(req.params.id)
+    .then((data) => res.status(200).json(data))
+    .catch((err) => next(err));
+});
 
 
 // signup route

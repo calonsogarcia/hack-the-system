@@ -1,6 +1,13 @@
 const router = require("express").Router();
 const UserDescription = require("../models/UserDescription.model");
 
+router.get("/all", (req, res, next) => {
+    UserDescription.find(req.params.id)
+      .then((data) => res.status(200).json(data))
+      .catch((err) => next(err));
+  });
+
+
 router.post("/", (req, res, next) => {
   const {
     descripcionPersonal,
