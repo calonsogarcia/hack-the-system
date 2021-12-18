@@ -127,7 +127,7 @@ router.patch("/profile/:id", (req, res, next) => {
 });
 
 //delete profile
-router.delete("/profiles/:id", (req, res, next) => {
+router.delete("/profile/:id", (req, res, next) => {
   User.findByIdAndDelete(req.params.id)
     .then((data) => res.json(data._id))
     .catch((err) => next(err));
