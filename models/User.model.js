@@ -17,10 +17,10 @@ const userSchema = new Schema(
     },
     fullName: String,
     age: Number,
-    sex: {
-      type: String,
-      enum: ["Mujer", "Hombre", "Prefiero no decirlo"]
-    }
+    UserDescription: {
+      type: Schema.Types.ObjectId,
+      ref: "UserDescription",
+    },
   },
   {
     timestamps: true,

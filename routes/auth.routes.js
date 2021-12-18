@@ -96,16 +96,16 @@ router.post("/login", (req, res, next) => {
 });
 
 //detailed profile (=> private)
-router.get("/profile/:id", (req, res, next) => {
+router.get("/:id", (req, res, next) => {
   User.findById(req.params.id)
     .then((data) => res.status(200).json(data))
     .catch((err) => next(err));
 });
 
 //edit profile
-router.patch("/profile/:id", (req, res, next) => {
+router.patch("/:id", (req, res, next) => {
   console.log("something");
-  const { username, email, fullName, image, sex, age} =
+  const { username, email, fullName, age} =
     req.body;
   User.findByIdAndUpdate(
     req.params.id,
@@ -113,8 +113,6 @@ router.patch("/profile/:id", (req, res, next) => {
       username,
       email,
       fullName,
-      image,
-      sex,
       age,
     },
     { new: true }
@@ -127,7 +125,7 @@ router.patch("/profile/:id", (req, res, next) => {
 });
 
 //delete profile
-router.delete("/profile/:id", (req, res, next) => {
+router.delete("/:id", (req, res, next) => {
   User.findByIdAndDelete(req.params.id)
     .then((data) => res.json(data._id))
     .catch((err) => next(err));
