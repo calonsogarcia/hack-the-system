@@ -5,10 +5,6 @@ const courseSchema = new Schema({
         type: String,
         unique: true
     },
-    id: {
-        type: String,
-        unique: true
-    },
     description: {
         type: String
     },
@@ -16,8 +12,9 @@ const courseSchema = new Schema({
         type: String
     },
     learning_route_id: {
-        type: String
-    }
+        type: Schema.Types.ObjectId,
+        ref: "LearningRoute"
+    },
 });
 
 const Course = model("Course", courseSchema);

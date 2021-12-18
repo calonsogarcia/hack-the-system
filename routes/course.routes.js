@@ -1,8 +1,8 @@
-const LearningRoute = require("../models/LearningRoute.model");
+const CourseRoute = require("../models/Course.model");
 const router = require("express").Router();
 
 router.get('/list', (req, res, next) => {
-    LearningRoute.find((err, data) => {
+    CourseRoute.find((err, data) => {
         if (err) {
             res.end(JSON.stringify({"message": "Learning Path error"}))
         } else {
@@ -15,16 +15,12 @@ router.post("/", (req, res, next) => {
     const {
         name,
         description,
-        level,
-        active,
-        routeId,
+        course_id
     } = req.body;
-    LearningRoute.create({
+    CourseRoute.create({
         name,
         description,
-        level,
-        active,
-        routeId,
+        course_id
     })
       .then((data) => res.status(200).json(data))
       .catch((err) => next(err));
@@ -32,7 +28,7 @@ router.post("/", (req, res, next) => {
 
 
   router.get("/:id", (req, res, next) => {
-    LearningRoute.findById(req.params.id)
+    CourseRoute.findById(req.params.id)
       .then((data) => res.status(200).json(data))
       .catch((err) => next(err));
   });
@@ -41,18 +37,14 @@ router.post("/", (req, res, next) => {
     const {
         name,
         description,
-        level,
-        active,
-        routeId,
+        course_id
     } = req.body;
-    LearningRoute.findByIdAndUpdate(
+    CourseRoute.findByIdAndUpdate(
       req.params.id,
       {
         name,
         description,
-        level,
-        active,
-        routeId,
+        course_id
     })
       .then((data) => res.status(200).json(data))
       .catch((err) => next(err));

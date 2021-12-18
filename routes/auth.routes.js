@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 
-router.get("/all", (req, res, next) => {
+router.get("/list", (req, res, next) => {
   User.find(req.params.id)
     .then((data) => res.status(200).json(data))
     .catch((err) => next(err));
