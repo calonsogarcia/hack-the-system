@@ -131,4 +131,17 @@ router.delete("/:id", (req, res, next) => {
     .catch((err) => next(err));
 });
 
+router.get('/list', (req, res, next) => {
+  res.setHeader('Content-Type', 'application/json');
+  User.find((err, data) => {
+    if (err){
+      console.log("error")
+      res.status(400);
+      res.end(JSON.stringify({message: "No users"}))
+    } else {
+      res.end(JSON.stringify(data));
+    }
+  })
+});
+
 module.exports = router;

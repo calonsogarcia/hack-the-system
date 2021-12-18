@@ -36,7 +36,12 @@ app.use("/user", user);
 const userDescription = require("./routes/userDescription.routes");
 app.use("/user/description", userDescription);
 
+app.get('/*', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(404);
+    res.end(JSON.stringify({message: "Page not found"}));
+})
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-require("./error-handling")(app);
+// require("./error-handling")(app);
 
 module.exports = app;
