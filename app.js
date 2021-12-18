@@ -33,8 +33,13 @@ app.use("/", index);
 const user = require("./routes/auth.routes");
 app.use("/user", user);
 
+
 const userDescription = require("./routes/userDescription.routes");
 app.use("/user/description", userDescription);
+
+const learningRoutes = require('./routes/learningRoutes.routes');
+app.use("/learning_routes", learningRoutes);
+
 
 app.get('/*', (req, res) => {
     res.setHeader('Content-Type', 'application/json');

@@ -11,6 +11,12 @@ const courseSchema = new Schema({
     },
     description: {
         type: String
+    },
+    course_id: {
+        type: String
+    },
+    learning_route_id: {
+        type: String
     }
 });
 
